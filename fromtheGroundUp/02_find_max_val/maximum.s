@@ -30,11 +30,12 @@ movl %eax, %ebx					# since %eax is now the first item, %ebx will
 start_loop:
  cmpl $0, %eax					# check whether we hit the end of the sequence
  je loop_exit
+
  incl %edi						# Increase data_items index
  movl data_items(,%edi,4), %eax
+ 
  cmpl %ebx, %eax				# COmpare largest against current value
  jle start_loop					# jump to loop beginning if new value isn't 
-								# bigger
  movl %eax, %ebx				# update largest value
  jmp start_loop
 
